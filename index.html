@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raleydi Wardhana | Engineering Physics Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#0b0f19',
+                        },
+                        blueprint: {
+                            light: '#e0f2fe',
+                            blue: '#0284c7',
+                            dark: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Blueprint schematic animated pulse */
+        .blueprint-line {
+            stroke-dasharray: 6;
+            animation: dash 30s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
+        }
+        .blueprint-glow {
+            filter: drop-shadow(0px 0px 4px rgba(2, 132, 199, 0.25));
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-slate-800 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-8xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-6 sm:space-x-8 text-sm font-medium">
+                <a href="#home" class="text-slate-900 hover:text-blue-600 border-b-2 border-slate-900 pb-1 transition-colors">Home</a>
+                <a href="#resume" class="text-slate-600 hover:text-slate-900 hover:border-b-2 hover:border-slate-300 pb-1 transition-colors">Resume</a>
+                <a href="#projects" class="text-slate-600 hover:text-slate-900 hover:border-b-2 hover:border-slate-300 pb-1 transition-colors">Projects</a>
+            </nav>
+
+            <!-- Center Branding -->
+            <div class="text-center font-bold text-slate-900 text-xs xs:text-sm sm:text-base tracking-tight truncate max-w-[250px] xs:max-w-none">
+                Raleydi Wardhana's portofolio
+            </div>
+
+            <!-- Mobile Menu Toggle Button (Visible on Mobile) -->
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition focus:outline-none" aria-label="Toggle Navigation">
+                <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+
+            <!-- Right Social Links -->
+            <div class="hidden md:flex items-center space-x-2 sm:space-x-4">
+                <a href="https://linkedin.com/in/raleydi-wardhana-aa9a272b9" target="_blank" rel="noopener" class="text-slate-600 hover:text-slate-900 text-base sm:text-lg transition-transform hover:scale-110 p-1" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/wraleydi" target="_blank" rel="noopener" class="text-slate-600 hover:text-slate-900 text-base sm:text-lg transition-transform hover:scale-110 p-1" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/wraleydi?igsi=Y2FjbXQ3MHd1a2Zn" target="_blank" rel="noopener" class="text-slate-600 hover:text-slate-900 text-base sm:text-lg transition-transform hover:scale-110 p-1" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+<div id="mobileMenu"
+     class="md:hidden max-h-0 opacity-0 overflow-hidden bg-white border-b border-slate-200 px-4 transition-all duration-300 ease-in-out">
+
+    <nav class="space-y-3 py-2">
+        <a href="#home"
+           onclick="closeMobileMenu()"
+           class="block py-2 text-slate-900 font-semibold text-sm hover:text-blue-600 border-b border-slate-100">
+            Home
+        </a>
+
+        <a href="#resume"
+           onclick="closeMobileMenu()"
+           class="block py-2 text-slate-700 font-medium text-sm hover:text-slate-900 border-b border-slate-100">
+            Resume
+        </a>
+
+        <a href="#projects"
+           onclick="closeMobileMenu()"
+           class="block py-2 text-slate-700 font-medium text-sm hover:text-slate-900">
+            Projects
+        </a>
+    </nav>
+
+    <div class="flex items-center gap-5 py-4 mt-2 border-t border-slate-100">
+        <a href="https://linkedin.com/in/raleydi-wardhana-aa9a272b9"
+           target="_blank"
+           rel="noopener"
+           class="text-slate-600 hover:text-slate-900 text-lg transition-transform hover:scale-110">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <a href="https://github.com/wraleydi"
+           target="_blank"
+           rel="noopener"
+           class="text-slate-600 hover:text-slate-900 text-lg transition-transform hover:scale-110">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://www.instagram.com/wraleydi?igsi=Y2FjbXQ3MHd1a2Zn"
+           target="_blank"
+           rel="noopener"
+           class="text-slate-600 hover:text-slate-900 text-lg transition-transform hover:scale-110">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+    </div>
+
+</div>
+
+</div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="home" class="relative overflow-hidden py-8 sm:py-16 md:py-20 lg:py-24 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+
+    <div class="absolute -top-8 sm:-top-12 left-0 sm:left-2
+                w-36 sm:w-52 h-28 sm:h-36
+                opacity-40 blueprint-glow">
+
+        <svg viewBox="0 0 220 140"
+             class="w-full h-full text-slate-800 stroke-current fill-none">
+
+            <defs>
+                <marker id="arrow-sensor"
+                        viewBox="0 0 10 10"
+                        refX="8"
+                        refY="5"
+                        markerWidth="4"
+                        markerHeight="4"
+                        orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z"
+                          fill="currentColor"/>
+                </marker>
+            </defs>
+
+            <!-- Sensor -->
+            <rect x="10" y="45"
+                  width="42"
+                  height="28"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="31" y="62"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                SENSOR
+            </text>
+
+            <!-- Signal -->
+            <line x1="52" y1="59"
+                  x2="75" y2="59"
+                  stroke-width="1.3"
+                  marker-end="url(#arrow-sensor)"/>
+
+            <!-- ADC -->
+            <rect x="75" y="40"
+                  width="42"
+                  height="38"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="96" y="57"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                ADC
+            </text>
+
+            <text x="96" y="68"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[6px]">
+                12-bit
+            </text>
+
+            <!-- MCU -->
+            <line x1="117" y1="59"
+                  x2="140" y2="59"
+                  stroke-width="1.3"
+                  marker-end="url(#arrow-sensor)"/>
+
+            <rect x="140" y="40"
+                  width="55"
+                  height="38"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="167.5" y="57"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                MCU
+            </text>
+
+            <text x="167.5" y="68"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[6px]">
+                PROCESS
+            </text>
+
+            <!-- Sampling waveform -->
+            <path d="M10 95
+                     C18 80,26 110,34 95
+                     S50 80,58 95
+                     S74 110,82 95"
+                  stroke-width="1"/>
+
+            <text x="45" y="120"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[7px]">
+                fs = 10.24 kHz
+            </text>
+
+        </svg>
+    </div>
+
+    <div class="absolute -top-10 right-0 sm:right-4
+                w-44 sm:w-60 h-32 sm:h-40
+                opacity-55 blueprint-glow">
+
+        <svg viewBox="0 0 240 150"
+             class="w-full h-full text-slate-800 stroke-current fill-none">
+
+            <defs>
+                <marker id="arrow-control"
+                        viewBox="0 0 10 10"
+                        refX="8"
+                        refY="5"
+                        markerWidth="4"
+                        markerHeight="4"
+                        orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z"
+                          fill="currentColor"/>
+                </marker>
+            </defs>
+
+            <!-- Setpoint -->
+            <text x="5" y="55"
+                  class="fill-current font-mono text-[7px]">
+                r(t)
+            </text>
+
+            <line x1="22" y1="50"
+                  x2="48" y2="50"
+                  stroke-width="1.3"
+                  marker-end="url(#arrow-control)"/>
+
+            <!-- Summing Junction -->
+            <circle cx="60" cy="50"
+                    r="12"
+                    stroke-width="1.3"/>
+
+            <text x="60" y="54"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[10px]">
+                Σ
+            </text>
+
+            <!-- Controller -->
+            <line x1="72" y1="50"
+                  x2="92" y2="50"
+                  stroke-width="1.2"
+                  marker-end="url(#arrow-control)"/>
+
+            <rect x="92" y="35"
+                  width="45"
+                  height="30"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="114.5" y="53"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                C(s)
+            </text>
+
+            <!-- Plant -->
+            <line x1="137" y1="50"
+                  x2="155" y2="50"
+                  stroke-width="1.2"
+                  marker-end="url(#arrow-control)"/>
+
+            <rect x="155" y="35"
+                  width="45"
+                  height="30"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="177.5" y="53"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                G(s)
+            </text>
+
+            <!-- Output -->
+            <line x1="200" y1="50"
+                  x2="230" y2="50"
+                  stroke-width="1.2"
+                  marker-end="url(#arrow-control)"/>
+
+            <text x="225" y="42"
+                  class="fill-current font-mono text-[7px]">
+                y(t)
+            </text>
+
+            <!-- Feedback -->
+            <path d="M215 50
+                     V105
+                     H60
+                     V62"
+                  stroke-width="1"
+                  stroke-dasharray="3,3"
+                  marker-end="url(#arrow-control)"/>
+
+            <text x="125" y="118"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[7px]">
+                H(s) / feedback
+            </text>
+
+            <!-- PID notation -->
+            <text x="145" y="140"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[7px]">
+                PID CONTROL LOOP
+            </text>
+
+        </svg>
+    </div>
+
+    <div class="absolute top-24 right-40 sm:right-50
+                w-40 sm:w-56 h-32 sm:h-40
+                opacity-40">
+
+        <svg viewBox="0 0 220 150"
+             class="w-full h-full text-slate-800 fill-current">
+
+            <text x="10" y="25"
+                  class="font-mono text-[13px]">
+                ∇ · E = ρ / ε₀
+            </text>
+
+            <text x="10" y="48"
+                  class="font-mono text-[12px]">
+                Q = mcΔT
+            </text>
+
+            <text x="10" y="70"
+                  class="font-mono text-[11px]">
+                P = VI = I²R
+            </text>
+
+            <text x="10" y="92"
+                  class="font-mono text-[11px]">
+                λ = hc / E
+            </text>
+
+            <text x="10" y="114"
+                  class="font-mono text-[10px]">
+                q = -k∇T
+            </text>
+
+            <text x="10" y="136"
+                  class="font-mono text-[9px]">
+                ∂T/∂t = α∇²T
+            </text>
+
+        </svg>
+    </div>
+
+    <div class="absolute top-[380px] left-[-10px]
+                w-40 sm:w-56 h-32 sm:h-40 
+                opacity-45">
+
+        <svg viewBox="0 0 220 150"
+             class="w-full h-full text-slate-800 stroke-current fill-none">
+
+            <!-- Wave -->
+            <path d="M10 75
+                     C20 35,30 35,40 75
+                     S60 115,70 75
+                     S90 35,100 75
+                     S120 115,130 75
+                     S150 35,160 75
+                     S180 115,190 75
+                     S210 35,220 75"
+                  stroke-width="1.5"/>
+
+            <!-- Axis -->
+            <line x1="10" y1="75"
+                  x2="220" y2="75"
+                  stroke-width="0.6"
+                  stroke-dasharray="2,3"/>
+
+            <!-- Amplitude -->
+            <line x1="40" y1="35"
+                  x2="40" y2="75"
+                  stroke-width="0.7"
+                  stroke-dasharray="2,2"/>
+
+            <!-- Wavelength -->
+            <line x1="40" y1="120"
+                  x2="100" y2="120"
+                  stroke-width="0.8"/>
+
+            <text x="20" y="25"
+                  class="fill-current font-mono text-[8px]">
+                ACOUSTIC WAVE
+            </text>
+
+            <text x="25" y="115"
+                  class="fill-current font-mono text-[7px]">
+                λ
+            </text>
+
+            <text x="45" y="45"
+                  class="fill-current font-mono text-[7px]">
+                A
+            </text>
+
+            <text x="130" y="140"
+                  class="fill-current font-mono text-[7px]">
+                λ = v / f
+            </text>
+
+            <text x="130" y="150"
+                  class="fill-current font-mono text-[7px]">
+                SPL [dB]
+            </text>
+
+        </svg>
+    </div>
+
+    <div class="absolute -bottom-10 right-0 sm:right-2
+                w-44 sm:w-56 h-36 sm:h-44
+                opacity-35 blueprint-glow">
+
+        <svg viewBox="0 0 220 170"
+             class="w-full h-full text-slate-800 stroke-current fill-none">
+
+            <defs>
+                <marker id="arrow-energy"
+                        viewBox="0 0 10 10"
+                        refX="8"
+                        refY="5"
+                        markerWidth="4"
+                        markerHeight="4"
+                        orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z"
+                          fill="currentColor"/>
+                </marker>
+            </defs>
+
+            <!-- Solar Panel -->
+            <rect x="15" y="35"
+                  width="65"
+                  height="55"
+                  stroke-width="1.4"/>
+
+            <!-- PV Cells -->
+            <path d="M15 53 H80
+                     M15 71 H80"
+                  stroke-width="0.7"/>
+
+            <path d="M37 35 V90
+                     M59 35 V90"
+                  stroke-width="0.7"/>
+
+            <!-- Sun -->
+            <circle cx="48" cy="15"
+                    r="8"
+                    stroke-width="1"/>
+
+            <path d="M48 25 V30
+                     M58 18 L64 22
+                     M38 18 L32 22"
+                  stroke-width="1"/>
+
+            <!-- Converter -->
+            <line x1="80" y1="62"
+                  x2="105" y2="62"
+                  stroke-width="1.3"
+                  marker-end="url(#arrow-energy)"/>
+
+            <rect x="105" y="45"
+                  width="45"
+                  height="34"
+                  rx="3"
+                  stroke-width="1.3"/>
+
+            <text x="127" y="66"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[8px]">
+                DC/DC
+            </text>
+
+            <!-- Load -->
+            <line x1="150" y1="62"
+                  x2="180" y2="62"
+                  stroke-width="1.3"
+                  marker-end="url(#arrow-energy)"/>
+
+            <rect x="180" y="45"
+                  width="25"
+                  height="34"
+                  stroke-width="1.3"/>
+
+            <text x="192" y="66"
+                  text-anchor="middle"
+                  class="fill-current font-mono text-[7px]">
+                R
+            </text>
+
+            <!-- Equations -->
+            <text x="110" y="105"
+                  class="fill-current font-mono text-[7px]">
+                P = ηAG
+            </text>
+
+            <text x="110" y="120"
+                  class="fill-current font-mono text-[7px]">
+                V × I → P
+            </text>
+
+            <text x="110" y="135"
+                  class="fill-current font-mono text-[7px]">
+                PV SYSTEM
+            </text>
+
+        </svg>
+    </div>
+
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2
+                w-44 sm:w-60 h-28 sm:h-36
+                opacity-30">
+
+        <svg viewBox="0 0 240 140"
+             class="w-full h-full text-slate-800 fill-current">
+
+            <text x="10" y="20"
+                  class="font-mono text-[9px]">
+                NUMERICAL MODEL
+            </text>
+
+            <text x="10" y="45"
+                  class="font-mono text-[8px]">
+                ∂u/∂t = α∇²u
+            </text>
+
+            <text x="10" y="65"
+                  class="font-mono text-[8px]">
+                FEM / FDM / CFD
+            </text>
+
+            <text x="10" y="85"
+                  class="font-mono text-[8px]">
+                Δx → 0
+            </text>
+
+            <text x="10" y="105"
+                  class="font-mono text-[8px]">
+                error ≤ ε
+            </text>
+
+            <text x="10" y="125"
+                  class="font-mono text-[7px]">
+                ITERATION : 1024
+            </text>
+
+        </svg>
+    </div>
+
+</div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+                
+                <!-- Left: Profile Image Frame -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-md aspect-[4/5] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 group border-4 border-slate-50">
+                        <img 
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" 
+                            alt="Raleydi Wardhana - Engineering Physics Specialist" 
+                            class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                            onerror="this.src='https://placehold.co/800x1000/0f172a/ffffff?text=Raleydi+Wardhana'"
+                        />
+                        <!-- Subtle Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-mono uppercase tracking-wider mb-1">B.Eng in Engineering Physics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Typography & Blueprint Overlay Graphics -->
+                <div class="lg:col-span-7 relative flex flex-col items-center lg:items-start text-center lg:text-left">
+                    
+                    <!-- Top Technical Blueprint Overlay Schematic (Control Feedback Loop) -->
+                    
+
+                    <!-- Main Hero Header -->
+                    <h1 class="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15] mb-4 sm:mb-6">
+                        I'm <span class=" decoration-slate-300 ">Raleydi Wardhana</span>,<br>
+                        an <span class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent">Engineering Physics</span>
+                    </h1>
+
+                    <!-- Hero Paragraph Description -->
+                    <p class="text-xs sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed max-w-xl mb-6 sm:mb-8">
+                        An Engineering Physics graduate dedicated to integrating <strong class="text-slate-900 font-semibold">Instrumentation & Control</strong>, <strong class="text-slate-900 font-semibold">Building Physics</strong>, <strong class="text-slate-900 font-semibold">Experimental Materials</strong>, and <strong class="text-slate-900 font-semibold">Multiphysics Computation</strong> to engineer green energy technologies and smart, efficient, sustainable industrial systems.
+                    </p>
+
+                    <p class="text-[11px] sm:text-sm text-slate-500 font-mono mb-6 sm:mb-8">
+                        ↓ Scroll down to explore engineering projects, research, and my resume.
+                    </p>
+
+                    <!-- Dark Pill CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full max-w-md">
+                        <a href="#projects" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-lg shadow-slate-900/10 active:scale-95">
+                            PROJECTS
+                        </a>
+                        <a href="#resume" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-lg shadow-slate-900/10 active:scale-95">
+                            RESUME
+                        </a>
+                        <a href="https://linkedin.com/in/raleydi-wardhana-aa9a272b9" target="_blank" rel="noopener" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-lg shadow-slate-900/10 active:scale-95">
+                            LINKEDIN
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Physics Pillars & Domains -->
+        <section class="py-12 bg-slate-50 border-y border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Areas of Expertise</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Core Pillars of Engineering Physics</h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <!-- Pillar 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:shadow-md transition group text-center">
+                        <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-microchip text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Instrumentation & Control</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">SCADA, PLC, IoT Sensors, Automation, Signal Processing</p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:shadow-md transition group text-center">
+                        <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Building Physics</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Room Acoustics, Daylighting, HVAC & Thermal Efficiency</p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:shadow-md transition group text-center">
+                        <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-atom text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Experimental Materials</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Thin Film Characterization, Nanotechnology & Piezoelectrics</p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:shadow-md transition group text-center">
+                        <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-calculator text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Multiphysics Computation</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">COMSOL Simulation, MATLAB, CFD & Finite Element Analysis (FEA)</p>
+                    </div>
+
+                    <!-- Pillar 5 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:shadow-md transition group text-center col-span-2 md:col-span-1">
+                        <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-leaf text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Green Energy</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Photovoltaic Solar Systems, Microgrids & Energy Harvesting</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section Carousel -->
+        <section id="projects" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">Engineering Portfolio</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Featured Projects & Research.</h2>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="scrollProjects(-1)" class="w-11 h-11 rounded-full border border-slate-300 hover:border-slate-900 flex items-center justify-center text-slate-700 hover:bg-slate-900 hover:text-white transition shadow-sm active:scale-90" title="Previous">
+                        <i class="fa-solid fa-arrow-left text-sm"></i>
+                    </button>
+                    <button onclick="scrollProjects(1)" class="w-11 h-11 rounded-full border border-slate-300 hover:border-slate-900 flex items-center justify-center text-slate-700 hover:bg-slate-900 hover:text-white transition shadow-sm active:scale-90" title="Next">
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Horizontal Carousel Track -->
+            <div id="projectTrack" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar py-2">
+                
+                <!-- Project Card 1: Instrumentation & Control -->
+                <div class="project-card snap-start flex-none w-[88vw] max-w-[320px] sm:max-w-none sm:w-[380px] md:w-[420px] bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop" 
+                             alt="Smart SCADA & Control Loop" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=Instrumentation+%26+Control'"/>
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Instrumentation</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Smart SCADA & Adaptive Control Loop.</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
+                                Distributed process automation scenario based on PLC Modbus and PID auto-tuning algorithms to maintain real-time reactor temperature and pressure stability.
+                            </p>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-900 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-slate-800 transition active:scale-95 w-fit">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Building Physics -->
+                <div class="project-card snap-start flex-none w-[88vw] max-w-[320px] sm:max-w-none sm:w-[380px] md:w-[420px] bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" 
+                             alt="Room Acoustics & Building Thermal Optimization" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=Building+Physics'"/>
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Building Physics</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Eco-Tower Acoustic & Thermal Physics.</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
+                                Reverberation time simulation (RT60) and calculation of sound insulation performance and daylighting efficiency on green building facades.
+                            </p>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-900 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-slate-800 transition active:scale-95 w-fit">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Experimental Materials -->
+                <div class="project-card snap-start flex-none w-[88vw] max-w-[320px] sm:max-w-none sm:w-[380px] md:w-[420px] bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=800&auto=format&fit=crop" 
+                             alt="Nanomaterial Thin Film Lab" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=Experimental+Materials'"/>
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Experimental Materials</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Piezoelectric Nanomaterial Harvester.</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
+                                Laboratory synthesis and crystal structure characterization of ZnO/PZT using SEM and XRD for converting mechanical vibration energy into micro-watt electricity.
+                            </p>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-900 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-slate-800 transition active:scale-95 w-fit">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Multiphysics Computation -->
+                <div class="project-card snap-start flex-none w-[88vw] max-w-[320px] sm:max-w-none sm:w-[380px] md:w-[420px] bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=800&auto=format&fit=crop" 
+                             alt="COMSOL Multiphysics Simulation" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=Multiphysics+Computation'"/>
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Computation & Simulation</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Multiphysics Heat Exchanger FEM.</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
+                                Finite element modeling (FEM) of convective-conductive heat transfer and computational fluid dynamics (CFD) in electric vehicle battery cooling micro-channels.
+                            </p>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-900 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-slate-800 transition active:scale-95 w-fit">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 5: Green Energy -->
+                <div class="project-card snap-start flex-none w-[88vw] max-w-[320px] sm:max-w-none sm:w-[380px] md:w-[420px] bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop" 
+                             alt="Hybrid Solar Microgrid System" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/ffffff?text=Green+Energy'"/>
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Green Energy</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Hybrid Solar-PV Microgrid Optimizer.</h3>
+                            <p class="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
+                                Design and simulation of renewable photovoltaic energy integration with Maximum Power Point Tracking (MPPT) and smart power management systems.
+                            </p>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-900 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-slate-800 transition active:scale-95 w-fit">
+                            LEARN MORE
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive Resume Section -->
+        <section id="resume" class="py-12 sm:py-20 md:py-24 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+                <span class="text-xs font-mono font-semibold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Curriculum Vitae</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Experience & Education Overview.</h2>
+                <p class="text-slate-600 text-xs sm:text-sm mt-2">Combining a solid academic foundation with hands-on physical system engineering experience.</p>
+            </div>
+
+            <!-- STREAMING_CHUNK:Updating resume tab menu responsiveness for >400px and <400px screens... -->
+            <!-- Resume Navigation Tabs: Segmented Control (<400px) & Original Border Bottom (>400px) -->
+            <div class="block min-[400px]:hidden mb-8 max-w-2xl mx-auto px-1">
+                <div class="grid grid-cols-1 xs:grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80 text-center">
+                    <button onclick="switchResumeTab('experience')" id="tab-experience-mobile" class="resume-tab-btn-mobile py-2.5 px-3 rounded-xl text-xs font-semibold transition-all bg-white text-slate-900 shadow-sm border border-slate-200/60 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-briefcase"></i> <span>Experience</span>
+                    </button>
+                    <button onclick="switchResumeTab('education')" id="tab-education-mobile" class="resume-tab-btn-mobile py-2.5 px-3 rounded-xl text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> <span>Education</span>
+                    </button>
+                    <button onclick="switchResumeTab('skills')" id="tab-skills-mobile" class="resume-tab-btn-mobile py-2.5 px-3 rounded-xl text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-sliders"></i> <span>Skills</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hidden min-[400px]:flex justify-center border-b border-slate-200 mb-10">
+                <div class="flex space-x-8">
+                    <button onclick="switchResumeTab('experience')" id="tab-experience-desktop" class="resume-tab-btn-desktop border-b-2 border-slate-900 pb-3 text-sm font-bold text-slate-900 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-xs"></i> <span>Experience</span>
+                    </button>
+                    <button onclick="switchResumeTab('education')" id="tab-education-desktop" class="resume-tab-btn-desktop border-b-2 border-transparent pb-3 text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-xs"></i> <span>Education</span>
+                    </button>
+                    <button onclick="switchResumeTab('skills')" id="tab-skills-desktop" class="resume-tab-btn-desktop border-b-2 border-transparent pb-3 text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-xs"></i> <span>Skills</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content: Experience -->
+            <div id="content-experience" class="resume-content space-y-8 max-w-4xl mx-auto">
+                
+                <div class="relative pl-8 border-l-2 border-slate-200 space-y-8">
+                    <!-- Item 1 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-900 border-4 border-white group-hover:scale-125 transition-transform"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                            <h3 class="text-lg font-bold text-slate-900">Instrumentation & Control Systems Engineer Intern</h3>
+                            <span class="font-mono text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1 sm:mt-0">2025 - Present</span>
+                        </div>
+                        <p class="text-xs font-mono text-blue-600 mb-2">PT Automation & Energy Solutions</p>
+                        <ul class="text-slate-600 text-xs sm:text-sm space-y-1.5 list-disc list-inside leading-relaxed">
+                            <li>Designed and configured SCADA Modbus RTU/TCP sensor communication schemes for monitoring industrial reactor thermal parameters.</li>
+                            <li>Developed Siemens S7-1200 PLC programming logic with PID feedback loops for precision pressure control.</li>
+                            <li>Calibrated industrial-grade pressure, temperature, and fluid flow transmitters.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-900 border-4 border-white group-hover:scale-125 transition-transform"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                            <h3 class="text-lg font-bold text-slate-900">Research Assistant - Building Physics & Acoustics Lab</h3>
+                            <span class="font-mono text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1 sm:mt-0">2024 - 2025</span>
+                        </div>
+                        <p class="text-xs font-mono text-blue-600 mb-2">Building Physics Laboratory, Engineering Physics Department</p>
+                        <ul class="text-slate-600 text-xs sm:text-sm space-y-1.5 list-disc list-inside leading-relaxed">
+                            <li>Conducted on-site measurements of room acoustic parameters (RT60, Sound Transmission Class STC) and Speech Transmission Index (STI).</li>
+                            <li>Simulated daylighting conditions and HVAC thermal cooling loads using Velux & EnergyPlus.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-900 border-4 border-white group-hover:scale-125 transition-transform"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                            <h3 class="text-lg font-bold text-slate-900">Head of Computational Physics Study Group</h3>
+                            <span class="font-mono text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-1 sm:mt-0">2023 - 2024</span>
+                        </div>
+                        <p class="text-xs font-mono text-blue-600 mb-2">Engineering Physics Student Association</p>
+                        <ul class="text-slate-600 text-xs sm:text-sm space-y-1.5 list-disc list-inside leading-relaxed">
+                            <li>Mentored 40+ students in MATLAB numerical modeling, Python NumPy/SciPy, and COMSOL multiphysics modeling.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Tab Content: Education -->
+            <div id="content-education" class="resume-content hidden space-y-8 max-w-4xl mx-auto">
+                <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <span class="text-xs font-mono text-blue-600 uppercase font-semibold">Bachelor of Engineering (B.Eng.)</span>
+                            <h3 class="text-xl font-bold text-slate-900">Engineering Physics / Teknik Fisika</h3>
+                        </div>
+                        <span class="font-mono text-xs font-semibold text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full mt-2 sm:mt-0">GPA: 3.82 / 4.00</span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-mono mb-4">Key Coursework:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-700">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Advanced Control Systems</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Building & Thermal Physics</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Material Characterization</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Industrial Instrumentation</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Numerical Computation</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Green Energy Conversion</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Skills -->
+            <div id="content-skills" class="resume-content hidden max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-code text-blue-600 mr-2"></i> Programming & Computing
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>MATLAB / Simulink</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[95%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Python (NumPy, SciPy, Control)</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[90%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>C / C++ Embedded Systems</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[85%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mastered Technical Skills & Engineering Competencies -->
+                    <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-award text-blue-600 mr-2"></i> Mastered Technical Skills
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Instrumentation & SCADA Control</span>
+                                    <span>Advanced</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[94%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Building Physics & Room Acoustics</span>
+                                    <span>Proficient</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[88%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Experimental Materials & Characterization</span>
+                                    <span>Advanced</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[90%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Multiphysics FEM & CFD Simulation</span>
+                                    <span>Proficient</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[86%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Download CV Button -->
+            <div class="text-center mt-12">
+                <button onclick="downloadCvToast()" class="inline-flex items-center px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-md active:scale-95">
+                    <i class="fa-solid fa-download mr-2"></i> DOWNLOAD FULL CV (PDF)
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 text-white border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <span class="text-lg font-bold tracking-tight text-white">Raleydi Wardhana</span>
+                    <p class="text-slate-400 text-xs mt-1">Engineering Physics | Control, Building Physics, Materials & Energy</p>
+                </div>
+
+                <div class="flex items-center space-x-6 text-sm">
+                    <button onclick="copyToClipboard('raleydi.wardhana@engineering.physics')" class="text-slate-300 hover:text-white transition flex items-center gap-2 font-mono text-xs">
+                        <i class="fa-regular fa-copy"></i> raleydi.wardhana@engineering.physics
+                    </button>
+                </div>
+
+                <div class="flex items-center space-x-4 text-slate-400">
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 mt-8 pt-8 text-center text-xs text-slate-600 font-mono">
+                &copy; 2026 Raleydi Wardhana Engineering Physics. Built with Clean Engineering Blueprint Aesthetic.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-mono border border-slate-800 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+        <span id="toastMessage">Notification message</span>
+    </div>
+
+    <script>
+        /* Mobile Menu Navigation Logic */
+        function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+
+    if (mobileMenu.classList.contains('max-h-0')) {
+
+        // Buka menu
+        mobileMenu.classList.remove('max-h-0', 'opacity-0');
+        mobileMenu.classList.add('max-h-[500px]', 'opacity-100');
+
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+
+    } else {
+
+        // Tutup menu
+        closeMobileMenu();
+    }
+}
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+
+    mobileMenu.classList.remove('max-h-[500px]', 'opacity-100');
+    mobileMenu.classList.add('max-h-0', 'opacity-0');
+
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+}
+
+        /* Project Carousel Navigation */
+        function scrollProjects(direction) {
+            const track = document.getElementById('projectTrack');
+            const scrollAmount = 380;
+            track.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        /* Resume Tabs Switcher */
+        function switchResumeTab(tabKey) {
+            const tabs = ['experience', 'education', 'skills'];
+            tabs.forEach(key => {
+                const btnMobile = document.getElementById(`tab-${key}-mobile`);
+                const btnDesktop = document.getElementById(`tab-${key}-desktop`);
+                const content = document.getElementById(`content-${key}`);
+                
+                if (key === tabKey) {
+                    if (btnMobile) btnMobile.className = "resume-tab-btn-mobile py-2.5 px-3 rounded-xl text-xs font-semibold transition-all bg-white text-slate-900 shadow-sm border border-slate-200/60 flex items-center justify-center gap-2";
+                    if (btnDesktop) btnDesktop.className = "resume-tab-btn-desktop border-b-2 border-slate-900 pb-3 text-sm font-bold text-slate-900 transition-colors flex items-center gap-2";
+                    if (content) content.classList.remove('hidden');
+                } else {
+                    if (btnMobile) btnMobile.className = "resume-tab-btn-mobile py-2.5 px-3 rounded-xl text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-2";
+                    if (btnDesktop) btnDesktop.className = "resume-tab-btn-desktop border-b-2 border-transparent pb-3 text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-2";
+                    if (content) content.classList.add('hidden');
+                }
+            });
+        }
+
+        /* Copy Email to Clipboard */
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('Email copied to clipboard!');
+        }
+
+        /* Download CV Toast */
+        function downloadCvToast() {
+            showToast('Downloading Curriculum Vitae (PDF)...');
+        }
+
+        /* Toast Helper */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
