@@ -960,7 +960,11 @@
                         </ul>
                     </div>
                 </div>
-
+                <div class="text-center mt-12">
+                <button onclick="downloadCvToast()" class="inline-flex items-center px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-md active:scale-95">
+                    <i class="fa-solid fa-download mr-2"></i> DOWNLOAD FULL CV (PDF)
+                </button>
+            </div>
             </div>
 
             <!-- Tab Content: Education -->
@@ -1001,6 +1005,25 @@
                         <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Introduction to Advanced Material Physics</div>
                     </div>
                 </div>
+                <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <span class="text-xs font-mono text-blue-600 uppercase font-semibold">Vocational School</span>
+                            <h3 class="text-xl font-bold text-slate-900">Computer Network Engineering</h3>
+                        </div>
+                        <span class="font-mono text-xs font-semibold text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full mt-2 sm:mt-0">core course</span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-mono mb-4">Key Coursework:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-700">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Network topology</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Computer Operating Systems</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Fiber Optic Networks</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Cybersecurity</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>MikroTik Network Configuration</div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Computer Hardware</div>
+                
+                    </div>
+                </div>
             </div>
 
             <!-- Tab Content: Skills -->
@@ -1009,34 +1032,52 @@
                     
                     <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
                         <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
-                            <i class="fa-solid fa-code text-blue-600 mr-2"></i> Programming & Computing
+                            <i class="fa-solid fa-code text-blue-600 mr-2"></i> Programming & Web Development
                         </h4>
                         <div class="space-y-3">
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>MATLAB / Simulink</span>
-                                    <span>95%</span>
+                                    <span>JavaScript & NodeJS - Web Development</span>
+                                    <span>75%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[95%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[75%]"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>Python (NumPy, SciPy, Control)</span>
-                                    <span>90%</span>
+                                    <span>Python - Data, Machine Learning</span>
+                                    <span>70%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[90%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[70%]"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>C / C++ Embedded Systems</span>
-                                    <span>85%</span>
+                                    <span>C / C++ - Embedded Systems</span>
+                                    <span>65%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[85%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[65%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>React & VEU - Web Development</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[45%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>CSS & Tailwind CSS - Web Development</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[65%]"></div>
                                 </div>
                             </div>
                         </div>
@@ -1045,22 +1086,84 @@
                     <!-- Mastered Technical Skills & Engineering Competencies -->
                     <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
                         <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
-                            <i class="fa-solid fa-award text-blue-600 mr-2"></i> Mastered Technical Skills
+                            <i class="fa-solid fa-gears text-blue-600 mr-2"></i> Engineering & Systems
                         </h4>
                         <div class="space-y-3">
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>Instrumentation & SCADA Control</span>
-                                    <span>Advanced</span>
+                                    <span>Electronic Circuits & Schematics</span>
+                                    <span>Basic</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[94%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[60%]"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>Building Physics & Room Acoustics</span>
-                                    <span>Proficient</span>
+                                    <span>Instrumentation & Control Systems</span>
+                                    <span>Coming</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[10%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Computational Materials</span>
+                                    <span>Coming</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[10%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>PCB Layout & Hardware Prototyping</span>
+                                    <span>Basic</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[55%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-brain text-blue-600 mr-2"></i> Computing & Informatics
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>artificial intelligence (ML, DL)</span>
+                                    <span>Basic</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[50%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Data Science / Analysis</span>
+                                    <span>Basic</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[40%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Operating system & Hardware</span>
+                                    <span>intermediate</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[70%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Computer Network</span>
+                                    <span>Expert</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                                     <div class="h-full bg-slate-900 rounded-full w-[88%]"></div>
@@ -1068,33 +1171,48 @@
                             </div>
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>Experimental Materials & Characterization</span>
-                                    <span>Advanced</span>
+                                    <span>Office Software (Word, Excell)</span>
+                                    <span>intermediate</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[90%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[65%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-screwdriver-wrench text-blue-600 mr-2"></i> Engineering Software
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Autocad / CAD</span>
+                                    <span>Basic</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[50%]"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between text-xs font-mono mb-1">
-                                    <span>Multiphysics FEM & CFD Simulation</span>
-                                    <span>Proficient</span>
+                                    <span>MATLAB</span>
+                                    <span>Basic</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-slate-900 rounded-full w-[86%]"></div>
+                                    <div class="h-full bg-slate-900 rounded-full w-[30%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1">
+                                    <span>Kicad / Ltspice</span>
+                                    <span>intermediate</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 rounded-full w-[60%]"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Download CV Button -->
-            <div class="text-center mt-12">
-                <button onclick="downloadCvToast()" class="inline-flex items-center px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-md active:scale-95">
-                    <i class="fa-solid fa-download mr-2"></i> DOWNLOAD FULL CV (PDF)
-                </button>
             </div>
         </section>
 
