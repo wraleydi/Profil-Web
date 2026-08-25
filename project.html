@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects - Raleydi Wardhana</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome kalau diperlukan -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="bg-white text-slate-900">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100">
+
+    <div class="max-w-8xl mx-auto px-3 sm:px-6 lg:px-8
+                h-16 sm:h-20 flex items-center justify-between gap-2">
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-6 sm:space-x-8 text-sm font-medium">
+
+            <a href="/index.html"
+               class="text-slate-900 hover:text-blue-600
+                      border-b-2 border-slate-900 pb-1 transition-colors">
+                Home
+            </a>
+
+            <a href="#resume"
+               class="text-slate-600 hover:text-slate-900
+                      hover:border-b-2 hover:border-slate-300
+                      pb-1 transition-colors">
+                Resume
+            </a>
+
+            <a href="#projects"
+               class="text-slate-600 hover:text-slate-900
+                      hover:border-b-2 hover:border-slate-300
+                      pb-1 transition-colors">
+                Projects
+            </a>
+
+        </nav>
+
+
+        <!-- Branding -->
+
+        <div class="text-center font-bold text-slate-900
+                    text-xs sm:text-base tracking-tight
+                    truncate max-w-[180px] sm:max-w-none">
+
+            Raleydi Wardhana's portfolio
+
+        </div>
+
+
+        <!-- Mobile Button -->
+
+        <button
+            id="mobileMenuBtn"
+            onclick="toggleMobileMenu()"
+            class="md:hidden p-2 text-slate-700
+                   hover:text-slate-900 rounded-lg
+                   hover:bg-slate-100 transition"
+            aria-label="Toggle Navigation">
+
+            <i id="mobileMenuIcon"
+               class="fa-solid fa-bars text-xl"></i>
+
+        </button>
+
+
+        <!-- Social -->
+
+        <div class="hidden md:flex items-center space-x-2 sm:space-x-4">
+
+            <a href="https://linkedin.com/in/raleydi-wardhana-aa9a272b9"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900
+                      text-base sm:text-lg
+                      transition-transform hover:scale-110 p-1">
+
+                <i class="fa-brands fa-linkedin"></i>
+
+            </a>
+
+            <a href="https://github.com/wraleydi"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900
+                      text-base sm:text-lg
+                      transition-transform hover:scale-110 p-1">
+
+                <i class="fa-brands fa-github"></i>
+
+            </a>
+
+            <a href="https://www.instagram.com/wraleydi"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900
+                      text-base sm:text-lg
+                      transition-transform hover:scale-110 p-1">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div id="mobileMenu"
+         class="md:hidden max-h-0 opacity-0 overflow-hidden
+                bg-white border-b border-slate-200
+                px-4 transition-all duration-300">
+
+        <nav class="space-y-3 py-2">
+
+            <a href="/index.html"
+               onclick="closeMobileMenu()"
+               class="block py-2 text-slate-900
+                      font-semibold text-sm
+                      border-b border-slate-100">
+
+                Home
+
+            </a>
+
+            <a href="#resume"
+               onclick="closeMobileMenu()"
+               class="block py-2 text-slate-700
+                      font-medium text-sm
+                      border-b border-slate-100">
+
+                Resume
+
+            </a>
+
+            <a href="#projects"
+               onclick="closeMobileMenu()"
+               class="block py-2 text-slate-700
+                      font-medium text-sm">
+
+                Projects
+
+            </a>
+
+        </nav>
+
+
+        <div class="flex items-center gap-5 py-4
+                    mt-2 border-t border-slate-100">
+
+            <a href="https://linkedin.com/in/raleydi-wardhana-aa9a272b9"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900 text-lg">
+
+                <i class="fa-brands fa-linkedin"></i>
+
+            </a>
+
+            <a href="https://github.com/wraleydi"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900 text-lg">
+
+                <i class="fa-brands fa-github"></i>
+
+            </a>
+
+            <a href="https://www.instagram.com/wraleydi"
+               target="_blank"
+               rel="noopener"
+               class="text-slate-600 hover:text-slate-900 text-lg">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section id="projects"
+    class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-16 sm:py-24">
+
+
+    <!-- =========================
+         SECTION HEADER
+    ========================== -->
+
+    <div class="mb-12 sm:mb-20 text-center">
+
+        <span
+            class="block mb-2 text-[9px] sm:text-[11px] font-bold font-mono
+                   tracking-[0.18em] uppercase text-slate-400">
+
+            Engineering Portfolio
+
+        </span>
+
+
+        <h1
+            class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]
+                   leading-[0.9] font-black tracking-[-0.055em]
+                   text-slate-900">
+
+            Projects.
+
+        </h1>
+
+    </div>
+
+
+    <!-- =========================
+         PROJECT GRID
+         DESKTOP  : 2 COLUMNS
+         MOBILE   : 2 COLUMNS
+    ========================== -->
+
+    <div class="grid grid-cols-2 gap-x-2 sm:gap-x-6 lg:gap-x-14 gap-y-14 sm:gap-y-24">
+
+    <!-- LEFT COLUMN -->
+    <div class="flex flex-col gap-14 sm:gap-24">
+
+        <!-- PROJECT 01 -->
+        <article class="group relative cursor-pointer opacity-0 translate-y-10 transition-all duration-700 ease-out [&.active]:opacity-100 [&.active]:translate-y-0" data-reveal>
+            <div class="relative w-full aspect-[0.78/1] sm:aspect-[0.88/1] overflow-hidden bg-slate-200">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1000&auto=format&fit=crop" alt="12V to 220V Inverter" class="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:contrast-[1.03]">
+                <span class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 font-mono text-[7px] sm:text-[10px] font-bold tracking-widest text-white/80">01</span>
+            </div>
+            <div class="relative z-20 w-[88%] sm:w-[72%] -mt-7 sm:-mt-14 px-3 py-3 sm:px-6 sm:py-5 bg-slate-200 transition-all duration-500 group-hover:-translate-y-2 group-hover:bg-slate-300">
+                <h3 class="text-[0.78rem] sm:text-xl md:text-2xl leading-tight font-extrabold tracking-tight text-slate-950">12V to 220V Inverter.</h3>
+                <p class="mt-1 sm:mt-2 font-mono text-[6px] sm:text-[9px] font-semibold tracking-wider uppercase text-slate-500">Power Electronics · Hardware</p>
+            </div>
+        </article>
+
+        <!-- PROJECT 03 -->
+        <article class="group relative cursor-pointer opacity-0 translate-y-10 transition-all duration-700 ease-out [&.active]:opacity-100 [&.active]:translate-y-0" data-reveal>
+            <div class="relative w-full aspect-[0.78/1] sm:aspect-[0.88/1] overflow-hidden bg-slate-200">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop" alt="LED Matrix Controller" class="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">
+                <span class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 font-mono text-[7px] sm:text-[10px] text-white/80">03</span>
+            </div>
+            <div class="relative z-20 w-[88%] sm:w-[72%] -mt-7 sm:-mt-14 px-3 py-3 sm:px-6 sm:py-5 bg-slate-200 transition-all duration-500 group-hover:-translate-y-2 group-hover:bg-slate-300">
+                <h3 class="text-[0.78rem] sm:text-xl md:text-2xl leading-tight font-extrabold tracking-tight text-slate-950">Smart LED Matrix Display.</h3>
+                <p class="mt-1 sm:mt-2 font-mono text-[6px] sm:text-[9px] font-semibold tracking-wider uppercase text-slate-500">Embedded System · Control</p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="flex flex-col gap-14 sm:gap-24 pt-16 sm:pt-36">
+
+        <!-- PROJECT 02 -->
+        <article class="group relative cursor-pointer opacity-0 translate-y-10 transition-all duration-700 ease-out [&.active]:opacity-100 [&.active]:translate-y-0" data-reveal>
+            <div class="relative w-full aspect-[0.78/1] sm:aspect-[0.88/1] overflow-hidden bg-slate-200">
+                <img src="inverter.jpeg" alt="Instrumentation and Control" class="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">
+                <span class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 font-mono text-[7px] sm:text-[10px] text-white/80">02</span>
+            </div>
+            <div class="relative z-20 w-[88%] sm:w-[72%] -mt-7 sm:-mt-14 px-3 py-3 sm:px-6 sm:py-5 bg-slate-200 transition-all duration-500 group-hover:-translate-y-2 group-hover:bg-slate-300">
+                <h3 class="text-[0.78rem] sm:text-xl md:text-2xl leading-tight font-extrabold tracking-tight text-slate-950">Smart SCADA & Adaptive Control.</h3>
+                <p class="mt-1 sm:mt-2 font-mono text-[6px] sm:text-[9px] font-semibold tracking-wider uppercase text-slate-500">Instrumentation · Control</p>
+            </div>
+        </article>
+
+        <!-- PROJECT 04 -->
+        <article class="group relative cursor-pointer opacity-0 translate-y-10 transition-all duration-700 ease-out [&.active]:opacity-100 [&.active]:translate-y-0" data-reveal>
+            <div class="relative w-full aspect-[0.78/1] sm:aspect-[0.88/1] overflow-hidden bg-slate-200">
+                <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1000&auto=format&fit=crop" alt="Building Physics" class="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">
+                <span class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 font-mono text-[7px] sm:text-[10px] text-white/80">04</span>
+            </div>
+            <div class="relative z-20 w-[88%] sm:w-[72%] -mt-7 sm:-mt-14 px-3 py-3 sm:px-6 sm:py-5 bg-slate-200 transition-all duration-500 group-hover:-translate-y-2 group-hover:bg-slate-300">
+                <h3 class="text-[0.78rem] sm:text-xl md:text-2xl leading-tight font-extrabold tracking-tight text-slate-950">Building Thermal & Acoustic Physics.</h3>
+                <p class="mt-1 sm:mt-2 font-mono text-[6px] sm:text-[9px] font-semibold tracking-wider uppercase text-slate-500">Building Physics · Simulation</p>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+</section>
+
+
+
+<script>
+    function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+
+    if (mobileMenu.classList.contains('max-h-0')) {
+
+        // Buka menu
+        mobileMenu.classList.remove('max-h-0', 'opacity-0');
+        mobileMenu.classList.add('max-h-[500px]', 'opacity-100');
+
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+
+    } else {
+
+        // Tutup menu
+        closeMobileMenu();
+    }
+}
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('mobileMenuIcon');
+
+    mobileMenu.classList.remove('max-h-[500px]', 'opacity-100');
+    mobileMenu.classList.add('max-h-0', 'opacity-0');
+
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+}
+
+        /* Project Carousel Navigation */
+        function scrollProjects(direction) {
+            const track = document.getElementById('projectTrack');
+            const scrollAmount = 380;
+            track.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const observer = new IntersectionObserver(
+
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+
+    );
+
+
+    document
+        .querySelectorAll("[data-reveal]")
+        .forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+});
+
+</script>
+
+
+</body>
+</html>
