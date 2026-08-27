@@ -14,13 +14,13 @@
 }
 
 @layer base {
-    body {
-        @apply bg-white text-slate-800 font-sans antialiased;
-    }
+  body {
+    @apply bg-white text-slate-800 font-sans antialiased;
+  }
 
-    ::selection {
-        @apply bg-slate-800 text-white;
-    }
+  ::selection {
+    @apply bg-slate-800 text-white;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -52,13 +52,13 @@
   opacity: 0;
   transform: translateY(40px) scale(0.98);
   transition:
-  opacity 0.8s ease,
-  transform 0.8s ease;
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .section-reveal.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 @keyframes dash {
   to {

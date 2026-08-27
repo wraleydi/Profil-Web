@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { Link } from "react-router-dom"
 import projects from "../data/projects"
 
 function Projects() {
@@ -34,7 +35,6 @@ function Projects() {
         </div>
       </div>
       <div className="relative">
-
         <button
           onClick={() => scrollProjects(-1)}
           className="
@@ -58,7 +58,6 @@ function Projects() {
             scroll-smooth hide-scrollbar py-2
           "
         >
-
           {projects.map((project) => (
             <div
               key={project.id}
@@ -75,7 +74,6 @@ function Projects() {
               "
             >
               <div className="relative h-64 overflow-hidden bg-slate-100">
-
                 <img
                   src={project.image}
                   alt={project.title}
@@ -104,7 +102,6 @@ function Projects() {
               </div>
 
               <div className="p-6 flex flex-col flex-grow justify-between">
-
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
                     {project.category}
@@ -115,28 +112,25 @@ function Projects() {
                   <p className="text-slate-600 text-xs line-clamp-3 mb-4 leading-relaxed">
                     {project.description}
                   </p>
-
                 </div>
-                <a
-                  href={project.link}
+                <Link
+                  to={`/project/${project.id}`}
                   className="
-                    inline-flex items-center justify-center
-                    px-6 py-2.5 rounded-xl
-                    bg-slate-900 text-white
-                    font-mono text-xs font-semibold
-                    uppercase tracking-wider
-                    hover:bg-slate-800
-                    transition active:scale-95
-                    w-fit
-                  "
+    inline-flex items-center justify-center
+    px-6 py-2.5 rounded-xl
+    bg-slate-900 text-white
+    font-mono text-xs font-semibold
+    uppercase tracking-wider
+    hover:bg-slate-800
+    transition active:scale-95
+    w-fit
+  "
                 >
                   LEARN MORE
-                </a>
-
+                </Link>
               </div>
             </div>
           ))}
-
         </div>
 
         <button
@@ -153,7 +147,6 @@ function Projects() {
         >
           <i className="fa-solid fa-arrow-right text-sm"></i>
         </button>
-
       </div>
     </section>
   )

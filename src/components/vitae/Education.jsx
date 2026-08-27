@@ -1,4 +1,4 @@
-import education from "../data/education"
+import education from "../../data/education"
 
 function Education() {
   return (
@@ -6,34 +6,25 @@ function Education() {
       id="content-education"
       className="resume-content space-y-8 max-w-4xl mx-auto"
     >
-
       {education.map((item, index) => (
         <div
           key={index}
           className="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200"
         >
-
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-
             <div>
               <span className="text-xs font-mono text-blue-600 uppercase font-semibold">
                 {item.level}
               </span>
 
-              <h3 className="text-xl font-bold text-slate-900">
-                {item.title}
-              </h3>
+              <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
             </div>
-
           </div>
 
           <div className="space-y-6">
-
             {item.periods.map((period, periodIndex) => (
               <div key={periodIndex}>
-
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-
                   <p className="text-xs text-slate-500 font-mono">
                     Key Coursework:
                   </p>
@@ -51,11 +42,9 @@ function Education() {
                   >
                     {period.label}
                   </span>
-
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-700">
-
                   {period.coursework.map((course, courseIndex) => (
                     <div
                       key={courseIndex}
@@ -70,17 +59,12 @@ function Education() {
                       {course}
                     </div>
                   ))}
-
                 </div>
-
               </div>
             ))}
-
           </div>
-
         </div>
       ))}
-
     </div>
   )
 }

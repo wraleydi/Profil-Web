@@ -1,76 +1,21 @@
-import { useState } from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Pillars from "./components/Pillars"
-import Projects from "./components/Projects"
-import ResumeNav from "./components/ResumeNav"
-import Experience from "./components/Experience"
-import Education from "./components/Education"
-import Skills from "./components/Skills"
-import Footer from "./components/Footer"
+import Home from "./components/pages/Home"
+import ProjectPage from "./components/pages/ProjectPage"
 
-import Toast from "./hooks/Toast"
-import useScrollReveal from "./hooks/useScroll"
-
-import "./index.css"
+import ScrollToHash from "./hooks/ScrollToHash"
 
 function App() {
-  useScrollReveal()
-
-  const [activeTab, setActiveTab] = useState("experience")
-
-  const [toast, setToast] = useState({
-    visible: false,
-    message: "",
-  })
-
-  const showToast = (message) => {
-    setToast({
-      visible: true,
-      message,
-    })
-
-    setTimeout(() => {
-      setToast({
-        visible: false,
-        message: "",
-      })
-    }, 3500)
-  }
-
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans antialiased">
-      <main className="flex-grow">
+    <BrowserRouter>
+      <ScrollToHash />
 
-        <Navbar />
-        <Hero />
-        <Pillars />
-        <Projects />
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-        <section
-          id="resume"
-          className="section-reveal py-12 sm:py-20 md:py-24 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8"
-        >
-          <ResumeNav onTabChange={setActiveTab} />
-          <div
-            key={activeTab}
-            className="resume-tab-content"
-          >
-            {activeTab === "experience" && <Experience onShowToast={showToast} />}
-
-            {activeTab === "education" && <Education />}
-
-            {activeTab === "skills" && <Skills />}
-          </div>
-        </section>
-      </main>
-      <Footer onShowToast={showToast} />
-      <Toast
-        message={toast.message}
-        visible={toast.visible}
-      />
-    </div>
+        <Route path="/project/:projectId" element={<ProjectPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

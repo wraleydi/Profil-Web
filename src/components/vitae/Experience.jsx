@@ -1,8 +1,7 @@
-import experiences from "../data/experience"
+import experiences from "../../data/experience"
 
 function Experience({ onShowToast }) {
-
-    const downloadCv = () => {
+  const downloadCv = () => {
     onShowToast("Downloading Curriculum Vitae (PDF)...")
   }
 
@@ -11,15 +10,9 @@ function Experience({ onShowToast }) {
       id="content-experience"
       className="resume-content space-y-8 max-w-4xl mx-auto"
     >
-
       <div className="relative pl-8 border-l-2 border-slate-200 space-y-8">
-
         {experiences.map((experience, index) => (
-          <div
-            key={index}
-            className="relative group"
-          >
-
+          <div key={index} className="relative group">
             <div
               className="
                 absolute -left-[41px] top-1
@@ -31,7 +24,6 @@ function Experience({ onShowToast }) {
             />
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-
               <h3 className="text-lg font-bold text-slate-900">
                 {experience.title}
               </h3>
@@ -49,7 +41,6 @@ function Experience({ onShowToast }) {
               >
                 {experience.period}
               </span>
-
             </div>
 
             <p className="text-xs font-mono text-blue-600 mb-2">
@@ -67,27 +58,22 @@ function Experience({ onShowToast }) {
               "
             >
               {experience.description.map((item, i) => (
-                <li key={i}>
-                  {item}
-                </li>
+                <li key={i}>{item}</li>
               ))}
             </ul>
-
           </div>
         ))}
-
       </div>
 
       <div className="text-center mt-12">
         <button
-  onClick={downloadCv}
-  className="inline-flex items-center px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-md active:scale-95"
->
-  <i className="fa-solid fa-download mr-2"></i>
-  DOWNLOAD FULL CV (PDF)
-</button>
+          onClick={downloadCv}
+          className="inline-flex items-center px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-semibold text-xs tracking-wider uppercase hover:bg-slate-800 transition shadow-md active:scale-95"
+        >
+          <i className="fa-solid fa-download mr-2"></i>
+          DOWNLOAD FULL CV (PDF)
+        </button>
       </div>
-
     </div>
   )
 }

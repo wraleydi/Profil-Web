@@ -22,9 +22,7 @@ function Toast({ message, visible }) {
     >
       <i className="fa-solid fa-circle-check text-emerald-400 text-xs sm:text-sm shrink-0"></i>
 
-      <span className="truncate">
-        {message}
-      </span>
+      <span className="truncate">{message}</span>
     </div>
   )
 }
