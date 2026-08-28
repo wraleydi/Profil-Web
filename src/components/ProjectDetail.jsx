@@ -8,7 +8,6 @@ function ProjectDetail() {
 
   const project = projects.find((project) => project.id === projectId)
 
-  // Fungsi scroll slider (scroll sejauh 60% dari lebar layar agar perpindahan terasa mantap)
   const handleScroll = (direction) => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current
@@ -72,7 +71,6 @@ function ProjectDetail() {
 
   return (
     <main className="bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
-      {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <img
           src={project.heroImage || project.image}
@@ -100,10 +98,8 @@ function ProjectDetail() {
         </div>
       </section>
 
-      {/* Process Slider Section - Konten Diperbesar Full Width */}
       <section className="py-12 sm:py-20 relative w-full px-2 sm:px-6">
         <div className="relative group max-w-[100vw]">
-          {/* Tombol Navigasi Kiri */}
           <button
             onClick={() => handleScroll("left")}
             aria-label="Scroll left"
@@ -124,7 +120,6 @@ function ProjectDetail() {
             </svg>
           </button>
 
-          {/* Tombol Navigasi Kanan */}
           <button
             onClick={() => handleScroll("right")}
             aria-label="Scroll right"
@@ -145,7 +140,6 @@ function ProjectDetail() {
             </svg>
           </button>
 
-          {/* Track Horizontal Scroll */}
           <div
             ref={scrollRef}
             className="flex space-x-6 sm:space-x-10 overflow-x-auto scrollbar-none scroll-smooth py-6 px-4 sm:px-12"
@@ -156,7 +150,7 @@ function ProjectDetail() {
                 key={index}
                 className="flex-none w-[90vw] sm:w-[65vw] lg:w-[45vw] xl:w-[38vw] group/card transition-transform duration-300 hover:-translate-y-1"
               >
-                {/* Gambar Card - Rasio Tinggi & Besar */}
+
                 <div className="relative aspect-[16/10] sm:aspect-[4/3] mb-6 overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
                   <img
                     src={item.image}
@@ -164,8 +158,6 @@ function ProjectDetail() {
                     className="w-full h-full object-cover object-center group-hover/card:scale-105 transition-transform duration-500 ease-out"
                   />
                 </div>
-
-                {/* Judul & Deskripsi */}
                 <div className="mb-3">
                   <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 font-sans">
                     {item.title}
