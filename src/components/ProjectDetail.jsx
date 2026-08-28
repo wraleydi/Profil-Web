@@ -1,10 +1,27 @@
+import { useRef } from "react"
 import { useParams } from "react-router-dom"
 import projects from "../data/projects"
 
 function ProjectDetail() {
   const { projectId } = useParams()
+  const scrollRef = useRef(null)
 
   const project = projects.find((project) => project.id === projectId)
+
+  // Fungsi scroll slider (scroll sejauh 60% dari lebar layar agar perpindahan terasa mantap)
+  const handleScroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current
+      const scrollAmount = clientWidth * 0.6
+      scrollRef.current.scrollTo({
+        left:
+          direction === "left"
+            ? scrollLeft - scrollAmount
+            : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      })
+    }
+  }
 
   if (!project) {
     return (
@@ -14,13 +31,53 @@ function ProjectDetail() {
     )
   }
 
+  const slides = [
+    {
+      title: "Seeing the Vision.",
+      description: project.vision,
+      image:
+        project.visionImage ||
+        project.heroImage ||
+        project.image ||
+        "https://via.placeholder.com/800x500",
+    },
+    {
+      title: "Forming A Plan.",
+      description: project.planning,
+      image:
+        project.planningImage ||
+        project.heroImage ||
+        project.image ||
+        "https://via.placeholder.com/800x500",
+    },
+    {
+      title: "Making It Happen.",
+      description: project.implementation,
+      image:
+        project.implementationImage ||
+        project.heroImage ||
+        project.image ||
+        "https://via.placeholder.com/800x500",
+    },
+    {
+      title: "Success & Beyond.",
+      description: project.outcome || project.implementation,
+      image:
+        project.outcomeImage ||
+        project.heroImage ||
+        project.image ||
+        "https://via.placeholder.com/800x500",
+    },
+  ]
+
   return (
-    <main className="bg-white text-slate-900">
+    <main className="bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
+      {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <img
           src={project.heroImage || project.image}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out"
         />
 
         <div className="absolute inset-0 bg-black/40"></div>
@@ -30,7 +87,7 @@ function ProjectDetail() {
               {project.category}
             </span>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none font-sans">
               {project.title}
             </h1>
 
@@ -43,197 +100,84 @@ function ProjectDetail() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          <article>
-            <div className="mb-5">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Seeing the Vision.
-              </h2>
-            </div>
+      {/* Process Slider Section - Konten Diperbesar Full Width */}
+      <section className="py-12 sm:py-20 relative w-full px-2 sm:px-6">
+        <div className="relative group max-w-[100vw]">
+          {/* Tombol Navigasi Kiri */}
+          <button
+            onClick={() => handleScroll("left")}
+            aria-label="Scroll left"
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full border border-slate-200 bg-white/95 backdrop-blur-md text-slate-900 shadow-2xl hover:bg-slate-900 hover:text-white transition-all duration-300 opacity-90 hover:opacity-100 hover:scale-110 active:scale-95"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
 
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {project.vision}
-            </p>
-          </article>
-          <article>
-            <div className="mb-5">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Forming A Plan.
-              </h2>
-            </div>
+          {/* Tombol Navigasi Kanan */}
+          <button
+            onClick={() => handleScroll("right")}
+            aria-label="Scroll right"
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full border border-slate-200 bg-white/95 backdrop-blur-md text-slate-900 shadow-2xl hover:bg-slate-900 hover:text-white transition-all duration-300 opacity-90 hover:opacity-100 hover:scale-110 active:scale-95"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
 
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {project.planning}
-            </p>
-          </article>
-          <article>
-            <div className="mb-5">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Making It Happen.
-              </h2>
-            </div>
-
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {project.implementation}
-            </p>
-          </article>
-        </div>
-      </section>
-
-      {project.mainImage && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-          <div className="overflow-hidden rounded-3xl bg-slate-100">
-            <img
-              src={project.mainImage}
-              alt={`${project.title} project`}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </section>
-      )}
-
-      <section className="bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2">
-              <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-semibold">
-                Project Overview
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3 mb-5">
-                About The Project.
-              </h2>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl">
-                {project.description}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8">
-              <h3 className="font-bold text-slate-900 mb-6">
-                Project Information
-              </h3>
-
-              <div className="space-y-5">
-                {project.status && (
-                  <div>
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-1">
-                      Status
-                    </span>
-
-                    <span className="text-sm font-semibold text-slate-800">
-                      {project.status}
-                    </span>
-                  </div>
-                )}
-
-                {project.category && (
-                  <div>
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-1">
-                      Category
-                    </span>
-
-                    <span className="text-sm font-semibold text-slate-800">
-                      {project.category}
-                    </span>
-                  </div>
-                )}
-
-                {project.year && (
-                  <div>
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-1">
-                      Year
-                    </span>
-
-                    <span className="text-sm font-semibold text-slate-800">
-                      {project.year}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8">
-            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-semibold">
-              Objective
-            </span>
-
-            <h3 className="text-2xl font-extrabold mt-3 mb-4">
-              What I Wanted To Achieve.
-            </h3>
-
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {project.objective}
-            </p>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8">
-            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-semibold">
-              Technologies
-            </span>
-
-            <h3 className="text-2xl font-extrabold mt-3 mb-5">
-              Tools & Technologies.
-            </h3>
-
-            <div className="flex flex-wrap gap-2">
-              {project.tags?.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-mono text-xs"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {project.gallery?.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-          <div className="mb-8">
-            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-semibold">
-              Project Documentation
-            </span>
-
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">
-              Building The System.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.gallery.map((image, index) => (
-              <div
+          {/* Track Horizontal Scroll */}
+          <div
+            ref={scrollRef}
+            className="flex space-x-6 sm:space-x-10 overflow-x-auto scrollbar-none scroll-smooth py-6 px-4 sm:px-12"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {slides.map((item, index) => (
+              <article
                 key={index}
-                className="overflow-hidden rounded-3xl bg-slate-100"
+                className="flex-none w-[90vw] sm:w-[65vw] lg:w-[45vw] xl:w-[38vw] group/card transition-transform duration-300 hover:-translate-y-1"
               >
-                <img
-                  src={image}
-                  alt={`${project.title} documentation ${index + 1}`}
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+                {/* Gambar Card - Rasio Tinggi & Besar */}
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] mb-6 overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center group-hover/card:scale-105 transition-transform duration-500 ease-out"
+                  />
+                </div>
+
+                {/* Judul & Deskripsi */}
+                <div className="mb-3">
+                  <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 font-sans">
+                    {item.title}
+                  </h2>
+                </div>
+
+                <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-normal max-w-none">
+                  {item.description}
+                </p>
+              </article>
             ))}
           </div>
-        </section>
-      )}
-
-      <section className="border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 text-sm font-mono text-slate-600 hover:text-slate-900 transition"
-          >
-            <i className="fa-solid fa-arrow-left"></i>
-            Back to Portfolio
-          </a>
         </div>
       </section>
     </main>

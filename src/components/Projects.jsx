@@ -116,15 +116,15 @@ function Projects() {
                 <Link
                   to={`/project/${project.id}`}
                   className="
-    inline-flex items-center justify-center
-    px-6 py-2.5 rounded-xl
-    bg-slate-900 text-white
-    font-mono text-xs font-semibold
-    uppercase tracking-wider
-    hover:bg-slate-800
-    transition active:scale-95
-    w-fit
-  "
+                  inline-flex items-center justify-center
+                  px-6 py-2.5 rounded-xl
+                  bg-slate-900 text-white
+                  font-mono text-xs font-semibold
+                  uppercase tracking-wider
+                  hover:bg-slate-800
+                  transition active:scale-95
+                  w-fit
+                  "
                 >
                   LEARN MORE
                 </Link>
